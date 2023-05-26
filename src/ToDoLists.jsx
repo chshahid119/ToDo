@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 const ToDoLists=(props)=>{
+    const [line,setLine]=useState(false);
+    const cutIt=()=>{
+        return(
+          setLine(true)
+        )
+      }
     return (<>
     <div className='todo_style'>
-    <img onClick={()=>{
+    <li onClick={cutIt} style={{textDecoration: line ?"line-through":"none"}}>{props.text}</li>
+    <i class="fa-solid fa-trash" onClick={()=>{
         props.onSelect(props.id);
-    }} alt='no-Img shown' 
-    src='https://img.icons8.com/?size=512&id=3062&format=png'/>
-    <li>{props.text}</li>
+    }}></i>
     </div>
     </>)
 }

@@ -6,6 +6,7 @@ const App=()=>{
   const [inputList,setInputList]=useState();
   const[items,setItems]=useState([]);
 
+
   const itemEvent=(event)=>{
     // console.log('added')
     setInputList(event.target.value);
@@ -19,14 +20,13 @@ const App=()=>{
        setInputList('');
   }
   const deleteItems=(id)=>{
-    console.log('deleted');
-
     setItems((oldItems)=>{
       return oldItems.filter((arrElem,index)=>{
              return index !==id;
       });
     });
 };
+
 
 return(
   
@@ -38,7 +38,7 @@ return(
         <br/>
         <input value={inputList}  onChange={itemEvent} type='text' 
         placeholder='Add Items'/>
-        <button onClick={listtOfItems}> + </button>
+        <button onClick={listtOfItems}> <i class="fa-solid fa-plus"></i> </button>
         <ol>
           {/* <li>{inputList}</li> */}
           {items.map((itemval,index)=>{
@@ -46,6 +46,7 @@ return(
           id={index}
            text={itemval}
           onSelect={deleteItems}
+          
            />
           })}
         </ol>
